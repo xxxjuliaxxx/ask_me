@@ -62,7 +62,7 @@ class FirstPage extends StatelessWidget {
           children: [
             Text(
               'Ask me a question and I will tell you the answear.',
-              style: GoogleFonts.abel(fontSize: 18),
+              style: GoogleFonts.abel(fontSize: 16),
             ),
             const SizedBox(
               height: 20,
