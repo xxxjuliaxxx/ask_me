@@ -53,9 +53,14 @@ class FirstPage extends StatelessWidget {
           children: [
             const Text('Pierwszy ekran'),
             ElevatedButton(
-              child: const Text('YES'),
-              onPressed: () {},
-            ),
+                child: const Text('YES'),
+                onPressed: () {
+                  Navigator.of(context).push(
+                    MaterialPageRoute(
+                      builder: (_) => const SecondPage(),
+                    ),
+                  );
+                }),
           ],
         ),
       ),
@@ -95,9 +100,9 @@ class SecondPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text('Pierwszy ekran'),
+            const Text('Drugi ekran'),
             ElevatedButton(
-              child: const Text('YES'),
+              child: const Text('NO'),
               onPressed: () {},
             ),
           ],
