@@ -1,4 +1,7 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 void main() {
   runApp(const MyApp());
@@ -29,7 +32,10 @@ class FirstPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 47, 178, 205),
-        title: const Text('Ask me a question'),
+        title: Text(
+          'Prepare good questions',
+          style: GoogleFonts.lato(fontSize: 21),
+        ),
         centerTitle: true,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
@@ -42,7 +48,10 @@ class FirstPage extends StatelessWidget {
             gradient: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
-              colors: <Color>[Colors.red, Colors.blue],
+              colors: <Color>[
+                Color.fromARGB(255, 212, 29, 62),
+                Color.fromARGB(255, 27, 215, 146)
+              ],
             ),
           ),
         ),
@@ -51,9 +60,18 @@ class FirstPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text('Pierwszy ekran'),
+            Text(
+              'Ask me a question and I will tell you the answear.',
+              style: GoogleFonts.abel(fontSize: 18),
+            ),
+            const SizedBox(
+              height: 20,
+            ),
             ElevatedButton(
-                child: const Text('YES'),
+                child: const Text('Check the answear'),
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: const Color.fromARGB(255, 45, 177, 200),
+                ),
                 onPressed: () {
                   Navigator.of(context).push(
                     MaterialPageRoute(
@@ -75,10 +93,15 @@ class SecondPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final random = Random();
+    final result = random.nextBool();
     return Scaffold(
       appBar: AppBar(
         backgroundColor: const Color.fromARGB(255, 47, 178, 205),
-        title: const Text('Ask me a question'),
+        title: Text(
+          'Try again',
+          style: GoogleFonts.lato(fontSize: 22),
+        ),
         centerTitle: true,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
@@ -91,7 +114,10 @@ class SecondPage extends StatelessWidget {
             gradient: LinearGradient(
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
-              colors: <Color>[Colors.red, Colors.blue],
+              colors: <Color>[
+                Color.fromARGB(255, 220, 0, 40),
+                Color.fromARGB(255, 0, 255, 119)
+              ],
             ),
           ),
         ),
@@ -100,10 +126,27 @@ class SecondPage extends StatelessWidget {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Text('Drugi ekran'),
+            if (result == true)
+              Text(
+                'The answear is ... YES',
+                style: GoogleFonts.lato(fontSize: 21),
+              ),
+            if (result == false)
+              Text(
+                'The answear is ... NO',
+                style: GoogleFonts.lato(fontSize: 21),
+              ),
+            const SizedBox(
+              height: 20,
+            ),
             ElevatedButton(
-              child: const Text('NO'),
-              onPressed: () {},
+              child: const Text('Ask me again'),
+              style: ElevatedButton.styleFrom(
+                backgroundColor: result == true ? Colors.green : Colors.red,
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
             ),
           ],
         ),
